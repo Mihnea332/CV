@@ -24,9 +24,9 @@ import { RouterLink } from "vue-router";
     </div>
 
     <nav class="main-nav">
-      <RouterLink to="/" class="nav-link">Prezentare</RouterLink>
-      <RouterLink to="/educatie" class="nav-link">Educație</RouterLink>
-      <RouterLink to="/github" class="nav-link">Proiecte GitHub</RouterLink>
+      <RouterLink to="/aboutme" class="nav-link">About me</RouterLink>
+      <RouterLink to="/education" class="nav-link">Education</RouterLink>
+      <RouterLink to="/repositories" class="nav-link">Repositories</RouterLink>
     </nav>
   </header>
 </template>

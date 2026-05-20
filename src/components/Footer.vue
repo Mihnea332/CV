@@ -3,11 +3,10 @@
 <template>
   <footer class="main-footer">
     <div class="footer-content">
-      <p class="copyright">© 2026 Portofoliu. Toate drepturile rezervate.</p>
+      <p class="copyright">© 2026 All rights reserved</p>
       <div class="social-links">
-        <a href="#" target="_blank" class="social-icon">GitHub</a>
-        <a href="#" target="_blank" class="social-icon">LinkedIn</a>
-        <a href="#" class="social-icon">Email</a>
+        <a href="https://github.com/Mihnea332" target="_blank" class="social-icon">GitHub</a>
+        <a href="https://www.linkedin.com/in/mihnea-gabriel-189a06369/?skipRedirect=true" target="_blank" class="social-icon">LinkedIn</a>
       </div>
     </div>
   </footer>

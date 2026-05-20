@@ -1,0 +1,203 @@
+<script setup lang="ts">
+</script>
+
+<template>
+  <div class="edu-wrapper">
+    <h1 class="neon-title">Education</h1>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="date">2024 - Present</span>
+          <h2 class="institution">Lucian Blaga University</h2>
+          <h3 class="degree">Faculty of Mathematics and Computer Science</h3>
+          <p class="description">
+            Major: Computer Science (BSc). Studying the fundamentals of software engineering, 
+            data structures, algorithms,embedded systems, databases, and system architecture.
+          </p>
+          <div class="relevant-courses">
+            <span class="course-tag">Data Structures</span>
+            <span class="course-tag">OOP</span>
+            <span class="course-tag">Web Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <span class="date">2020 - 2024</span>
+          <h2 class="institution">Onisifor Ghibu High School</h2>
+          <h3 class="degree">Mathematics and Informatics Profile</h3>
+          <p class="description">
+            Built the foundation for logical thinking and took my first steps in programming 
+            (C++).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+.edu-wrapper {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  color: #ffffff;
+  padding: 2rem 0;
+}
+
+.neon-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  color: #39ff14;
+  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 60px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 21px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  border: 3px solid #39ff14;
+  box-shadow: 0 0 10px #39ff14;
+  z-index: 2;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  background: rgba(57, 255, 20, 0.05);
+  border-left: 3px solid #39ff14;
+  transform: translateX(10px);
+}
+
+.date {
+  color: #39ff14;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.institution {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}
+
+.degree {
+  color: #888;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.relevant-courses {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.course-tag {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  border-radius: 15px;
+  color: #39ff14;
+}
+
+/* Extra Section */
+.extra-edu {
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.extra-title {
+  font-family: 'Orbitron', sans-serif;
+  color: #39ff14;
+  margin-bottom: 2rem;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.course-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #111;
+  transition: 0.3s;
+}
+
+.course-card:hover {
+  border-color: #39ff14;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+}
+
+.course-card h4 {
+  margin: 0 0 0.5rem 0;
+}
+
+.course-card p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .timeline::before { left: 20px; }
+  .timeline-marker { left: 11px; }
+  .timeline-item { padding-left: 40px; }
+  .neon-title { font-size: 2rem; }
+}
+</style>

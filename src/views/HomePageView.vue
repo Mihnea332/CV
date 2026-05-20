@@ -18,6 +18,21 @@
         stroke-linecap="round"
         stroke-linejoin="round"></path>
     </svg>
+    <div class="ringdiv">
+      <div class="toprow">
+        <RouterLink to="/aboutme" class="ring">
+          <span class="ring-text">Prezentare</span>
+        </RouterLink>
+         <RouterLink to="/education" class="ring">
+          <span class="ring-text">Education</span>
+        </RouterLink>
+      </div>
+      <div class="bottomrow">
+        <RouterLink to="/repositories" class="ring">
+          <span class="ring-text">Repositories</span>
+        </RouterLink>
+      </div>
+    </div>
   </main>
 </template>
 <style scoped>
@@ -60,7 +75,61 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px); /* O mișcare ușoară în jos */
+    transform: translateY(10px); 
   }
+}
+.ringdiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; 
+}
+
+.toprow {
+  display: flex;
+  gap: 30px; 
+}
+
+.bottomrow {
+  display: flex;
+  justify-content: center;
+    margin-top: -30px; 
+}
+
+.ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #39ff14;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.9); 
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5), inset 0 0 10px rgba(57, 255, 20, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.ring:hover {
+  transform: scale(1.1);
+  z-index: 10; 
+  box-shadow: 0 0 25px #39ff14, inset 0 0 15px #39ff14;
+  background-color: rgba(57, 255, 20, 0.15);
+}
+
+.ring-text {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  text-shadow: 0 0 6px #39ff14;
+  transition: color 0.3s ease;
+  text-align: center;
+}
+
+.ring:hover .ring-text {
+  color: #39ff14;
+  text-shadow: 0 0 8px #ffffff;
 }
 </style>
