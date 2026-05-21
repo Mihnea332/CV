@@ -6,21 +6,23 @@ import { RouterLink } from "vue-router";
   <header class="top-navbar">
     <div class="animation">
       <div class="circle"></div>
-      <svg
-        class="icon-controller"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round">
-        <rect x="2" y="6" width="20" height="12" rx="2"></rect>
-        <path d="M6 12h4"></path>
-        <path d="M8 10v4"></path>
-        <circle cx="15" cy="11" r="1"></circle>
-        <circle cx="18" cy="13" r="1"></circle>
-      </svg>
+      <RouterLink to="/">
+        <svg
+          class="icon-controller"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+          <path d="M6 12h4"></path>
+          <path d="M8 10v4"></path>
+          <circle cx="15" cy="11" r="1"></circle>
+          <circle cx="18" cy="13" r="1"></circle>
+        </svg>
+      </RouterLink>
     </div>
 
     <nav class="main-nav">

@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
+:root {
+  --neon-color: #39ff14;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  background: #000; /* keep dark theme consistent */
+  color: #fff;
+}
+
+.neon-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  color: var(--neon-color);
+  text-shadow:
+    0 0 10px var(--neon-color),
+    0 0 20px var(--neon-color);
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* small-screen tweak used in several components */
+@media (max-width: 600px) {
+  .neon-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+}

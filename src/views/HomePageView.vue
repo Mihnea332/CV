@@ -21,9 +21,9 @@
     <div class="ringdiv">
       <div class="toprow">
         <RouterLink to="/aboutme" class="ring">
-          <span class="ring-text">Prezentare</span>
+          <span class="ring-text">About me</span>
         </RouterLink>
-         <RouterLink to="/education" class="ring">
+        <RouterLink to="/education" class="ring">
           <span class="ring-text">Education</span>
         </RouterLink>
       </div>
@@ -35,8 +35,8 @@
     </div>
   </main>
 </template>
+
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
 .prezentare {
   display: flex;
   justify-content: center;
@@ -75,47 +75,52 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px); 
+    transform: translateY(10px);
   }
 }
-.ringdiv{
+.ringdiv {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px; 
+  margin-top: 40px;
 }
 
 .toprow {
   display: flex;
-  gap: 30px; 
+  gap: 30px;
 }
 
 .bottomrow {
   display: flex;
   justify-content: center;
-    margin-top: -30px; 
+  margin-top: -30px;
 }
 
 .ring {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #39ff14;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.9); 
-  box-shadow: 0 0 15px rgba(57, 255, 20, 0.5), inset 0 0 10px rgba(57, 255, 20, 0.3);
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow:
+    0 0 15px rgba(57, 255, 20, 0.5),
+    inset 0 0 10px rgba(57, 255, 20, 0.3);
   transition: all 0.3s ease;
   z-index: 1;
+  margin: -5px;
 }
 
 .ring:hover {
   transform: scale(1.1);
-  z-index: 10; 
-  box-shadow: 0 0 25px #39ff14, inset 0 0 15px #39ff14;
+  z-index: 10;
+  box-shadow:
+    0 0 25px #39ff14,
+    inset 0 0 15px #39ff14;
   background-color: rgba(57, 255, 20, 0.15);
 }
 

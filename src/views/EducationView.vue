@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="edu-wrapper">
@@ -11,10 +10,11 @@
         <div class="timeline-content">
           <span class="date">2024 - Present</span>
           <h2 class="institution">Lucian Blaga University</h2>
-          <h3 class="degree">Faculty of Mathematics and Computer Science</h3>
+          <h3 class="degree">Faculty of Engineering</h3>
           <p class="description">
-            Major: Computer Science (BSc). Studying the fundamentals of software engineering, 
-            data structures, algorithms,embedded systems, databases, and system architecture.
+            Major: Computer Science (BSc). Studying the fundamentals of software
+            engineering, data structures, algorithms,embedded systems,
+            databases, and system architecture.
           </p>
           <div class="relevant-courses">
             <span class="course-tag">Data Structures</span>
@@ -31,8 +31,8 @@
           <h2 class="institution">Onisifor Ghibu High School</h2>
           <h3 class="degree">Mathematics and Informatics Profile</h3>
           <p class="description">
-            Built the foundation for logical thinking and took my first steps in programming 
-            (C++).
+            Built the foundation for logical thinking and took my first steps in
+            programming (C++).
           </p>
         </div>
       </div>
@@ -41,8 +41,6 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
 .edu-wrapper {
   width: 100%;
   min-height: 80vh;
@@ -54,15 +52,6 @@
   padding: 2rem 0;
 }
 
-.neon-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3rem;
-  color: #39ff14;
-  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
-  margin-bottom: 4rem;
-  text-transform: uppercase;
-}
-
 .timeline {
   position: relative;
   max-width: 800px;
@@ -71,7 +60,7 @@
 }
 
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 30px;
   top: 0;
@@ -121,7 +110,7 @@
 }
 
 .institution {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: 1.4rem;
   margin: 0.5rem 0;
 }
@@ -161,7 +150,7 @@
 }
 
 .extra-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   color: #39ff14;
   margin-bottom: 2rem;
 }
@@ -195,9 +184,14 @@
 }
 
 @media (max-width: 600px) {
-  .timeline::before { left: 20px; }
-  .timeline-marker { left: 11px; }
-  .timeline-item { padding-left: 40px; }
-  .neon-title { font-size: 2rem; }
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-marker {
+    left: 11px;
+  }
+  .timeline-item {
+    padding-left: 40px;
+  }
 }
 </style>
