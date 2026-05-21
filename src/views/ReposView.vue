@@ -13,7 +13,7 @@ type Repo = {
 };
 
 const repos = ref<Repo[]>([]);
-const count = ref(4);
+const count = ref(6);
 const getRepos = async () => {
   try {
     const res = await fetch("https://api.github.com/users/Mihnea332/repos");
@@ -28,7 +28,7 @@ const visibleRepos = computed(() => {
   return repos.value.slice(0, count.value);
 });
 const loadMore = () => {
-  count.value += 4;
+  count.value += 6;
 };
 onMounted(() => {
   getRepos();
@@ -98,6 +98,10 @@ onMounted(() => {
 }
 .repocard:hover {
   background: rgba(10, 138, 116, 0.5);
+}
+.name {
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 .name a {
   color: #39ff14;
