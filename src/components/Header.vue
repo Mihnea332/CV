@@ -120,4 +120,26 @@ import { RouterLink } from "vue-router";
     inset 0 0 6px rgba(57, 255, 20, 0.2);
   text-shadow: 0 0 5px #39ff14;
 }
+@media (max-width: 768px) {
+  .top-navbar {
+    height: auto;
+    min-height: 80px;
+    padding: 0.6rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  .nav-link {
+    text-decoration: none;
+    color: #888;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+  }
+}
 </style>

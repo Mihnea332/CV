@@ -14,7 +14,10 @@ type Repo = {
 
 const repos = ref<Repo[]>([]);
 const count = ref(6);
+const isLoading = ref(true);
+
 const getRepos = async () => {
+  isLoading.value = true;
   try {
     const res = await fetch("https://api.github.com/users/Mihnea332/repos");
     const data = await res.json();
@@ -22,6 +25,8 @@ const getRepos = async () => {
     repos.value = data;
   } catch (error) {
     console.error("Eroare: ", error);
+  } finally {
+    isLoading.value = false;
   }
 };
 const visibleRepos = computed(() => {
@@ -38,6 +43,10 @@ onMounted(() => {
 <template>
   <div class="repos-wrapper">
     <h1 class="neon-title">Repositories</h1>
+    <div v-if="isLoading" class="loader-container">
+      <div class="neon-spinner"></div>
+      <div class="loader-text">FETCHING_REPOS...</div>
+    </div>
     <div class="wrappergrid">
       <div v-for="repo in visibleRepos" :key="repo.id" class="repocard">
         <h2 class="name">
@@ -176,5 +185,58 @@ onMounted(() => {
 .load-more-btn:hover {
   background: rgba(57, 255, 20, 0.1);
   box-shadow: 0 0 10px #39ff14;
+}
+/* --- LOADING CONTAINER CSS --- */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px; /* Îl împinge puțin mai jos de titlu */
+  width: 100%;
+}
+
+/* Animațiile și spinner-ul rămân la fel */
+.neon-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid transparent;
+  border-top-color: #39ff14;
+  border-right-color: #39ff14;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow:
+    0 0 15px #39ff14,
+    inset 0 0 10px #39ff14;
+  margin-bottom: 25px;
+}
+
+.loader-text {
+  color: #39ff14;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 15px #39ff14;
+  }
+  50% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
 }
 </style>

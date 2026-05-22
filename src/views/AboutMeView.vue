@@ -59,18 +59,18 @@
           <tbody>
             <tr>
               <td class="lang-name">Listening Comprehension</td>
-              <td><span class="badge-c2">C2</span></td>
-              <td class="lang-desc">Proficient User</td>
+              <td><span class="badge-c2">B2</span></td>
+              <td class="lang-desc">Upper-Intermediate</td>
             </tr>
             <tr>
               <td class="lang-name">Reading & Writing</td>
-              <td><span class="badge-c2">C2</span></td>
-              <td class="lang-desc">Proficient User</td>
+              <td><span class="badge-c2">B2</span></td>
+              <td class="lang-desc">Upper-Intermediate</td>
             </tr>
             <tr>
               <td class="lang-name">Speaking & Interaction</td>
-              <td><span class="badge-c2">C2</span></td>
-              <td class="lang-desc">Proficient User</td>
+              <td><span class="badge-c2">B2</span></td>
+              <td class="lang-desc">Upper-Intermediate</td>
             </tr>
           </tbody>
         </table>
