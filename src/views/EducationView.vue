@@ -1,4 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+const favoriteCourses = ref([
+  {
+    id: 1,
+    title: "SQL Tutorial - Full Database Course for Beginners by freeCodeCamp",
+    url: "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+  },
+  {
+    id: 2,
+    title: "Learn Vue.js - Tutorial for Beginners by freeCodeCamp",
+    url: "https://www.youtube.com/watch?v=Kt2E8nblvXU&t=4312s",
+  },
+  {
+    id: 3,
+    title: "Node.js and Express.js - Full Course by freeCodeCamp",
+    url: "https://www.youtube.com/watch?v=Oe421EPjeBE&t=2734s",
+  },
+]);
+</script>
 
 <template>
   <div class="edu-wrapper">
@@ -35,6 +54,20 @@
             programming (C++).
           </p>
         </div>
+      </div>
+    </div>
+    <div class="courses-section">
+      <h2 class="subtitle">Favourite video courses</h2>
+
+      <div class="courses-container">
+        <a
+          v-for="course in favoriteCourses"
+          :key="course.id"
+          :href="course.url"
+          target="_blank"
+          class="course-btn">
+          {{ course.title }}
+        </a>
       </div>
     </div>
   </div>
@@ -141,7 +174,6 @@
   color: #39ff14;
 }
 
-/* Extra Section */
 .extra-edu {
   margin-top: 4rem;
   width: 100%;
@@ -193,5 +225,45 @@
   .timeline-item {
     padding-left: 40px;
   }
+}
+.courses-section {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.subtitle {
+  color: #39ff14;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.course-btn {
+  color: #39ff14;
+  background: rgba(57, 255, 20, 0.1);
+  padding: 8px 16px;
+  border: 1px solid #39ff14;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.course-btn:hover {
+  background: rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 10px #39ff14;
+  color: #ffffff;
 }
 </style>

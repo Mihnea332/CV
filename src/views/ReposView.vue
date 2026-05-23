@@ -10,31 +10,69 @@ type Repo = {
   created_at: string;
   stargazers_count: number;
   forks_count: number;
+  updated_at: string;
+  fork: boolean;
 };
 
 const repos = ref<Repo[]>([]);
 const count = ref(6);
 const isLoading = ref(true);
+const errorMessage = ref<string | null>(null);
+const languages = ref<string[]>([]);
 
 const getRepos = async () => {
   isLoading.value = true;
   try {
-    const res = await fetch("https://api.github.com/users/Mihnea332/repos");
+    const res = await fetch("/api/repos.ts");
+    if (!res.ok) {
+      if (res.status == 403)
+        throw new Error(
+          "Ups... Limita de cereri catre GitHub a fost atins. Te rog asteapta cateva momente...",
+        );
+      else throw new Error("Eroare de comunicare cu serverul");
+    }
     const data = await res.json();
     //   console.log(data);
     repos.value = data;
-  } catch (error) {
-    console.error("Eroare: ", error);
+    repos.value = data.filter((repo: Repo) => repo.fork === false);
+    visibleRepos.value = repos.value.slice(0, count.value);
+    repos.value.forEach((repo) => {
+      if (!languages.value.includes(repo.language))
+        languages.value.push(repo.language);
+    });
+    languages.value.pop();
+    languages.value.forEach((element) => {
+      console.log(element);
+    });
+  } catch (error: any) {
+    errorMessage.value = error;
   } finally {
     isLoading.value = false;
   }
 };
-const visibleRepos = computed(() => {
-  return repos.value.slice(0, count.value);
-});
+const visibleRepos = ref<Repo[]>([]);
+const currentLang = ref<string>("");
+
 const loadMore = () => {
   count.value += 6;
 };
+
+const filter = (lang: string) => {
+  if (currentLang.value === lang) {
+    currentLang.value = "";
+    count.value = 6;
+    visibleRepos.value = repos.value.slice(0, count.value);
+    return;
+  }
+
+  currentLang.value = lang;
+  count.value = 6;
+  const filteredList = repos.value.filter(
+    (repo: Repo) => repo.language === lang,
+  );
+  visibleRepos.value = filteredList.slice(0, count.value);
+};
+
 onMounted(() => {
   getRepos();
 });
@@ -43,6 +81,17 @@ onMounted(() => {
 <template>
   <div class="repos-wrapper">
     <h1 class="neon-title">Repositories</h1>
+    <div class="languages">
+      <button
+        v-for="language in languages"
+        :key="language"
+        class="language"
+        :class="{ 'active-lang': currentLang === language }"
+        @click="filter(language)">
+        {{ language }}
+      </button>
+    </div>
+    <div v-if="errorMessage" class="error-box">>_ {{ errorMessage }}</div>
     <div v-if="isLoading" class="loader-container">
       <div class="neon-spinner"></div>
       <div class="loader-text">FETCHING_REPOS...</div>
@@ -53,7 +102,7 @@ onMounted(() => {
           <a :href="repo.html_url" target="_blank">{{ repo.name }}</a>
         </h2>
         <p class="description">{{ repo.description || "No description" }}</p>
-        <span class="language"> {{ repo.language || "Not added" }}</span>
+        <span class="repo-language">{{ repo.language || "Not added" }}</span>
         <br />
         <span class="stars">⭐ {{ repo.stargazers_count }}</span>
         <br />
@@ -61,6 +110,10 @@ onMounted(() => {
         <br />
         <span class="date"
           >Created at: {{ repo.created_at.split("T")[0] }}</span
+        >
+        <br />
+        <span class="date"
+          >Updated at: {{ repo.updated_at.split("T")[0] }}</span
         >
       </div>
     </div>
@@ -93,7 +146,6 @@ onMounted(() => {
 }
 
 @media (max-width: 600px) {
-  /* small tweaks kept here; .neon-title handled in global.css */
 }
 .repocard {
   background: rgba(17, 17, 17, 0.8);
@@ -132,11 +184,29 @@ onMounted(() => {
 .language {
   color: #39ff14;
   background: rgba(57, 255, 20, 0.1);
-  padding: 4px 8px;
+  padding: 6px 14px;
   border: 1px solid #39ff14;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 0.85rem;
+  font-family: "Courier New", Courier, monospace;
   max-width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language:hover {
+  background: rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+  transform: translateY(-2px);
+}
+
+.language:active,
+.active-lang {
+  color: #111111;
+  background: #39ff14;
+  border: 1px solid #39ff14;
+  box-shadow: 0 0 15px #39ff14;
+  transform: translateY(0);
 }
 
 .date {
@@ -186,17 +256,16 @@ onMounted(() => {
   background: rgba(57, 255, 20, 0.1);
   box-shadow: 0 0 10px #39ff14;
 }
-/* --- LOADING CONTAINER CSS --- */
+
 .loader-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px; /* Îl împinge puțin mai jos de titlu */
+  margin-top: 50px;
   width: 100%;
 }
 
-/* Animațiile și spinner-ul rămân la fel */
 .neon-spinner {
   width: 60px;
   height: 60px;
@@ -238,5 +307,24 @@ onMounted(() => {
     opacity: 0.4;
     text-shadow: none;
   }
+}
+.languages {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.repo-language {
+  display: inline-block;
+  color: #00e5ff;
+  background: rgba(221, 167, 20, 0.1);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: monospace;
+  max-width: fit-content;
 }
 </style>
