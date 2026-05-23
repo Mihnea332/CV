@@ -19,11 +19,19 @@ const count = ref(6);
 const isLoading = ref(true);
 const errorMessage = ref<string | null>(null);
 const languages = ref<string[]>([]);
+const totalAvailable = computed(() => {
+  if (currentLang.value === "") {
+    return repos.value.length;
+  }
+
+  return repos.value.filter((repo: Repo) => repo.language === currentLang.value)
+    .length;
+});
 
 const getRepos = async () => {
   isLoading.value = true;
   try {
-    const res = await fetch("/api/repos.ts");
+    const res = await fetch("/api/repos");
     if (!res.ok) {
       if (res.status == 403)
         throw new Error(
@@ -118,7 +126,10 @@ onMounted(() => {
       </div>
     </div>
 
-    <button v-if="count < repos.length" @click="loadMore" class="load-more-btn">
+    <button
+      v-if="count < totalAvailable"
+      @click="loadMore"
+      class="load-more-btn">
       System.loadMore()
     </button>
   </div>
