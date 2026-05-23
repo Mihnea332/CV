@@ -1,42 +1,24 @@
-# .
+# Terminal-Themed Developer Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+Codul sursă pentru portofoliul meu personal. Este o aplicație web cu o interfață inspirată din terminalele retro/neon, care preia, filtrează și afișează automat proiectele mele publice de pe GitHub.
 
-## Recommended IDE Setup
+Pentru a ocoli limita standard de request-uri a API-ului GitHub și a păstra token-ul de autentificare strict pe server, cererile nu se fac din frontend, ci printr-un proxy serverless.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tehnologii folosite
 
-## Recommended Browser Setup
+- **Frontend:** Vue 3 (Composition API), TypeScript, Vite
+- **Backend (Proxy):** Vercel Serverless Functions (Node.js)
+- **Date:** GitHub REST API
+- **Stilizare:** CSS pur (fără framework-uri externe)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Instalare și rulare locală
 
-## Type Support for `.vue` Imports in TS
+Pentru a rula acest proiect pe calculatorul tău, asigură-te că ai [Node.js](https://nodejs.org/) instalat.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 1. Clonarea proiectului
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
+git clone [https://github.com/Mihnea332/Numele-Repo-ului-Tau.git](https://github.com/Mihnea332/Numele-Repo-ului-Tau.git)
+cd Numele-Repo-ului-Tau
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
 ```

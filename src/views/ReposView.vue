@@ -63,6 +63,15 @@ const currentLang = ref<string>("");
 
 const loadMore = () => {
   count.value += 6;
+
+  if (currentLang.value !== "") {
+    const filteredList = repos.value.filter(
+      (repo: Repo) => repo.language === currentLang.value,
+    );
+    visibleRepos.value = filteredList.slice(0, count.value);
+  } else {
+    visibleRepos.value = repos.value.slice(0, count.value);
+  }
 };
 
 const filter = (lang: string) => {
